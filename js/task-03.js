@@ -17,11 +17,7 @@ const ulGalerry = document.querySelector(".gallery");
 ulGalerry.style.display = "flex";
 ulGalerry.style.listStyleType = "none";
 ulGalerry.style.flexWrap = "wrap";
-const addImages = images.map((element) => {
-  ulGalerry.insertAdjacentHTML(
-    "afterbegin",
-    `<li><img src="${element.url} alt="${element.alt} width='300'"></li>`
-  );
-});
-
-console.log(ulGalerry);
+const createItem = ({ url, alt }) =>
+  `<li><img src="${url}" alt="${alt}" width = 200 height = 150></li>`;
+const gallery = images.reduce((acc, item) => acc + createItem(item), "");
+ulGalerry.insertAdjacentHTML("afterbegin", gallery);

@@ -1,13 +1,16 @@
 const validator = document.querySelector("#validation-input");
 
-const dataLengthCheker = (event) => {
-  validator.classList.add("invalid");
+const dataLengthCheker = () => {
+  const inputText = validator.value.trim();
 
-  if (
-    Number(event.currentTarget.attributes[2].nodeValue) ===
-    event.currentTarget.value.length
-  ) {
-    validator.classList.replace("invalid", "valid");
+  if (inputText === "") {
+    validator.classList.remove("invalid");
+  } else if (inputText.length === 6) {
+    validator.classList.remove("invalid");
+    validator.classList.add("valid");
+  } else {
+    validator.classList.add("invalid");
+    validator.classList.remove("valid");
   }
 };
 
